@@ -24,7 +24,251 @@ namespace QCHack.Task3 {
     // even though they apply single-qubit gates to separate qubits. Make sure you run the test
     // on your solution to check that it passes before you submit the solution!
     operation Task3_ValidTriangle (inputs : Qubit[], output : Qubit) : Unit is Adj+Ctl {
-        // ...
+        // //Setting bitstrings for flipping
+        let pattern1 = [false, false, true];
+        let pattern2 = [false, true, false];
+        let pattern3 = [false, true, true];
+        let pattern4 = [true, false, false];
+        let pattern5 = [true, false, true];
+        let pattern6 = [true, true, false];
+        let pattern7 = [false, false, false];
+        let numElements = Length(inputs);
+
+        within {
+            for (index in 0 .. numElements - 1){
+                if (not pattern1[index]) {
+                    X(inputs[index]);
+                }
+                elif (not pattern2[index]) {
+                    X(inputs[index]);
+                }
+                elif (not pattern3[index]) {
+                    X(inputs[index]);
+                }
+                elif (not pattern4[index]) {
+                    X(inputs[index]);
+                }
+                elif (not pattern5[index]) {
+                    X(inputs[index]);
+                }
+                elif (not pattern6[index]) {
+                    X(inputs[index]);
+                }
+                elif (not pattern7[index]) {
+                    X(inputs[index]);
+                }
+                else{
+                    //X(inputs[index]);
+                    //do nothing
+                }
+                
+            }
+        } apply {
+
+            use anc = Qubit();
+            CCNOT(inputs[0],inputs[1],output);
+            //CNOT(anc,output);
+            //CCNOT(inputs[0],inputs[1],anc);
+        }
+
+
+
+        // within {
+        //     for (index in 0 .. numElements - 1){
+        //         if (not pattern1[index]) {
+        //             X(inputs[index]);
+        //         }
+        //     }
+        // } apply {
+        //      //Controlled X(Most(inputs), Tail(inputs));
+
+        //     //  use anc1 = Qubit();
+        //     //  use anc2 = Qubit();
+        //     //  CNOT(inputs[0],anc1);
+        //     //  CNOT(inputs[1],anc2);
+        //     //  X(anc2);
+        //     //  CNOT(anc1,anc2);
+        //     //  CNOT(anc2, output);
+
+        //     use anc = Qubit();
+        //     CCNOT(inputs[0],inputs[1],anc);
+        //     CNOT(anc,output);
+        //     CCNOT(inputs[0],inputs[1],anc);
+
+
+
+        //     //  let m = Most(inputs);
+        //     //  let t = Tail(inputs);
+        //     //  CNOT(m,t);
+
+        //     // use anc1 = Qubit();
+        //     // CNOT(inputs[0],anc1);
+        //     // CNOT(inputs[0],output);
+        //     // CNOT(inputs[1],output);
+        //     // CNOT(anc1,output);
+        //     // CNOT(inputs[0],anc1);
+        // }
+
+        // within {
+        //     for (index in 0 .. numElements - 1){
+        //         if (not pattern2[index]) {
+        //             X(inputs[index]);
+        //         }
+        //     }
+        // } apply {
+        //     //Controlled X(Most(inputs), Tail(inputs));
+        //     //CNOT(inputs[0], output);
+        //     //CNOT(Most(inputs), Tail(inputs));
+        //     // let m = Most(inputs);
+        //     // let t = Tail(inputs);
+        //     // CNOT(m,t);
+
+        //     use anc = Qubit();
+        //     CCNOT(inputs[0],inputs[1],anc);
+        //     CNOT(anc,output);
+        //     CCNOT(inputs[0],inputs[1],anc);
+
+        //     // use anc1 = Qubit();
+        //     // CNOT(inputs[0],anc1);
+        //     // CNOT(inputs[0],output);
+        //     // CNOT(inputs[1],output);
+        //     // CNOT(anc1,output);
+        //     // CNOT(inputs[0],anc1);
+            
+        // }
+
+        // within {
+        //     for (index in 0 .. numElements - 1){
+        //         if (not pattern3[index]) {
+        //             X(inputs[index]);
+        //         }
+        //     }
+        // } apply {
+        //     //Controlled X(Most(inputs), Tail(inputs));
+        //     //CNOT(inputs[0], output);
+        //     //CNOT(Most(inputs), Tail(inputs));
+        //     // let m = Most(inputs);
+        //     // let t = Tail(inputs);
+        //     // CNOT(m,t);
+
+        //     use anc = Qubit();
+        //     CCNOT(inputs[0],inputs[1],anc);
+        //     CNOT(anc,output);
+        //     CCNOT(inputs[0],inputs[1],anc);
+
+        //     // use anc1 = Qubit();
+        //     // CNOT(inputs[0],anc1);
+        //     // CNOT(inputs[0],output);
+        //     // CNOT(inputs[1],output);
+        //     // CNOT(anc1,output);
+        //     // CNOT(inputs[0],anc1);
+        // }
+
+        // within {
+        //     for (index in 0 .. numElements - 1){
+        //         if (not pattern4[index]) {
+        //             X(inputs[index]);
+        //         }
+        //     }
+        // } apply {
+        //     //Controlled X(Most(inputs), Tail(inputs));
+        //     //CNOT(inputs[0], output);
+        //     // let m = Most(inputs);
+        //     // let t = Tail(inputs);
+        //     // CNOT(m,t);
+
+        //     use anc = Qubit();
+        //     CCNOT(inputs[0],inputs[1],anc);
+        //     CNOT(anc,output);
+        //     CCNOT(inputs[0],inputs[1],anc);
+
+        //     // use anc1 = Qubit();
+        //     // CNOT(inputs[0],anc1);
+        //     // CNOT(inputs[0],output);
+        //     // CNOT(inputs[1],output);
+        //     // CNOT(anc1,output);
+        //     // CNOT(inputs[0],anc1);
+        // }
+
+        // within {
+        //     for (index in 0 .. numElements - 1){
+        //         if (not pattern5[index]) {
+        //             X(inputs[index]);
+        //         }
+        //     }
+        // } apply {
+        //     //Controlled X(Most(inputs), Tail(inputs));
+        //     //CNOT(inputs[0], output);
+        //     //CNOT(Most(inputs), Tail(inputs));
+        //     // let m = Most(inputs);
+        //     // let t = Tail(inputs);
+        //     // CNOT(m,t);
+
+        //     use anc = Qubit();
+        //     CCNOT(inputs[0],inputs[1],anc);
+        //     CNOT(anc,output);
+        //     CCNOT(inputs[0],inputs[1],anc);
+
+        //     // use anc1 = Qubit();
+        //     // CNOT(inputs[0],anc1);
+        //     // CNOT(inputs[0],output);
+        //     // CNOT(inputs[1],output);
+        //     // CNOT(anc1,output);
+        //     // CNOT(inputs[0],anc1);
+        // }
+
+        // within {
+        //     for (index in 0 .. numElements - 1){
+        //         if (not pattern6[index]) {
+        //             X(inputs[index]);
+        //         }
+        //     }
+        // } apply {
+        //     //Controlled X(Most(inputs), Tail(inputs));
+        //     //CNOT(inputs[0], output);
+        //     //CNOT(Most(inputs), Tail(inputs));
+        //     // let m = Most(inputs);
+        //     // let t = Tail(inputs);
+        //     // CNOT(m,t);
+
+        //     use anc = Qubit();
+        //     CCNOT(inputs[0],inputs[1],anc);
+        //     CNOT(anc,output);
+        //     CCNOT(inputs[0],inputs[1],anc);
+
+        //     // use anc1 = Qubit();
+        //     // CNOT(inputs[0],anc1);
+        //     // CNOT(inputs[0],output);
+        //     // CNOT(inputs[1],output);
+        //     // CNOT(anc1,output);
+        //     // CNOT(inputs[0],anc1);
+        // }
+
+        // within {
+        //     for (index in 0 .. numElements - 1){
+        //         if (not pattern7[index]) {
+        //             X(inputs[index]);
+        //         }
+        //     }
+        // } apply {
+        //     //Controlled X(Most(inputs), Tail(inputs));
+        //     //CNOT(inputs[0], output);
+        //     //CNOT(Most(inputs), Tail(inputs));
+        //     // let m = Most(inputs);
+        //     // let t = Tail(inputs);
+        //     // CNOT(m,t);
+
+        //     use anc = Qubit();
+        //     CCNOT(inputs[0],inputs[1],anc);
+        //     CNOT(anc,output);
+        //     CCNOT(inputs[0],inputs[1],anc);
+
+        //     // use anc1 = Qubit();
+        //     // CNOT(inputs[0],anc1);
+        //     // CNOT(inputs[0],output);
+        //     // CNOT(inputs[1],output);
+        //     // CNOT(anc1,output);
+        //     // CNOT(inputs[0],anc1);
+        // }
     }
 }
-
